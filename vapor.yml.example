@@ -1,0 +1,63 @@
+id: your-project-id
+name: your-statamic-project
+environments:
+    production:
+        memory: 1024
+        cli-memory: 512
+        runtime: 'php-8.2'
+        domain: your-domain.com
+        build:
+            - 'composer install --no-dev --optimize-autoloader'
+            - 'npm ci && npm run build'
+            - 'php artisan config:cache'
+            - 'php artisan route:cache'
+            - 'php artisan view:cache'
+        deploy:
+            - 'php artisan statamic:stache:warm'
+            - 'php artisan config:cache'
+        variables:
+            # Laravel Configuration
+            APP_ENV: production
+            APP_DEBUG: false
+            LOG_CHANNEL: stderr
+            
+            # Statamic S3 Configuration
+            STATAMIC_S3_DISK: s3
+            STATAMIC_S3_PREFIX: content
+            STATAMIC_S3_COLLECTIONS_DRIVER: s3
+            STATAMIC_S3_ENTRIES_DRIVER: s3
+            STATAMIC_S3_GLOBALS_DRIVER: s3
+            STATAMIC_S3_TAXONOMIES_DRIVER: s3
+            STATAMIC_S3_TERMS_DRIVER: s3
+            STATAMIC_S3_ASSETS_DRIVER: s3
+            STATAMIC_S3_ASSET_CONTAINERS_DRIVER: s3
+            STATAMIC_S3_NAVIGATIONS_DRIVER: s3
+            STATAMIC_S3_NAVIGATION_TREES_DRIVER: s3
+            
+            # Caching Configuration
+            STATAMIC_S3_CACHE_ENABLED: true
+            STATAMIC_S3_CACHE_TTL: 3600
+            CACHE_DRIVER: dynamodb
+            SESSION_DRIVER: dynamodb
+            
+        storage: your-s3-bucket-name
+
+    staging:
+        memory: 512
+        cli-memory: 512
+        runtime: 'php-8.2'
+        build:
+            - 'composer install --optimize-autoloader'
+            - 'npm ci && npm run build'
+            - 'php artisan config:cache'
+        deploy:
+            - 'php artisan statamic:stache:warm'
+        variables:
+            APP_ENV: staging
+            APP_DEBUG: true
+            STATAMIC_S3_DISK: s3
+            STATAMIC_S3_PREFIX: content
+            STATAMIC_S3_COLLECTIONS_DRIVER: s3
+            STATAMIC_S3_ENTRIES_DRIVER: s3
+            STATAMIC_S3_GLOBALS_DRIVER: s3
+        storage: your-staging-s3-bucket-name

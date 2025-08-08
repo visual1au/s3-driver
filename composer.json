@@ -1,0 +1,56 @@
+{
+	"name": "visual1au/s3-driver",
+	"description": "Store Statamic flat file content in AWS S3 using Laravel's filesystem abstraction",
+	"type": "statamic-addon",
+	"license": "MIT",
+	"keywords": [
+		"statamic",
+		"s3",
+		"filesystem",
+		"vapor",
+		"aws",
+		"laravel"
+	],
+	"authors": [
+		{
+			"name": "Support",
+			"email": "support@visual1.com.au"
+		}
+	],
+	"require": {
+		"php": "^8.1",
+		"statamic/cms": "^4.0 || ^5.0",
+		"laravel/framework": "^10.0 || ^11.0 || ^12.0",
+		"league/flysystem-aws-s3-v3": "^3.0"
+	},
+	"require-dev": {
+		"orchestra/testbench": "^8.0 || ^9.0",
+		"phpunit/phpunit": "^10.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Statamic\\S3Filesystem\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Statamic\\S3Filesystem\\Tests\\": "tests/"
+		}
+	},
+	"extra": {
+		"statamic": {
+			"name": "S3 Filesystem Driver",
+			"description": "Store Statamic content files in AWS S3 using Laravel's filesystem abstraction"
+		},
+		"laravel": {
+			"providers": [
+				"Statamic\\S3Filesystem\\ServiceProvider"
+			]
+		}
+	},
+	"scripts": {
+		"test": "phpunit"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
