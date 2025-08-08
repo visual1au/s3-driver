@@ -21,6 +21,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Asset Containers
   - Navigations
   - Navigation Trees
+  - Blueprints
+  - Fieldsets
+  - Forms
+  - Form Submissions
+  - Users
+  - User Groups
+  - User Roles
+  - Sites
+  - Tokens
+  - Revisions
+  - Collection Trees
+  - Global Variables
 - Built-in caching layer for performance optimization
 - Configurable content type drivers
 - Laravel Vapor compatibility

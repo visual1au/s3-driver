@@ -71,6 +71,54 @@ return [
         'driver' => env('STATAMIC_S3_NAVIGATION_TREES_DRIVER', 'file'),
     ],
 
+    'blueprints' => [
+        'driver' => env('STATAMIC_S3_BLUEPRINTS_DRIVER', 'file'),
+    ],
+
+    'fieldsets' => [
+        'driver' => env('STATAMIC_S3_FIELDSETS_DRIVER', 'file'),
+    ],
+
+    'forms' => [
+        'driver' => env('STATAMIC_S3_FORMS_DRIVER', 'file'),
+    ],
+
+    'form_submissions' => [
+        'driver' => env('STATAMIC_S3_FORM_SUBMISSIONS_DRIVER', 'file'),
+    ],
+
+    'users' => [
+        'driver' => env('STATAMIC_S3_USERS_DRIVER', 'file'),
+    ],
+
+    'user_groups' => [
+        'driver' => env('STATAMIC_S3_USER_GROUPS_DRIVER', 'file'),
+    ],
+
+    'user_roles' => [
+        'driver' => env('STATAMIC_S3_USER_ROLES_DRIVER', 'file'),
+    ],
+
+    'sites' => [
+        'driver' => env('STATAMIC_S3_SITES_DRIVER', 'file'),
+    ],
+
+    'tokens' => [
+        'driver' => env('STATAMIC_S3_TOKENS_DRIVER', 'file'),
+    ],
+
+    'revisions' => [
+        'driver' => env('STATAMIC_S3_REVISIONS_DRIVER', 'file'),
+    ],
+
+    'collection_trees' => [
+        'driver' => env('STATAMIC_S3_COLLECTION_TREES_DRIVER', 'file'),
+    ],
+
+    'global_variables' => [
+        'driver' => env('STATAMIC_S3_GLOBAL_VARIABLES_DRIVER', 'file'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Caching Configuration
@@ -105,5 +153,17 @@ return [
         'terms' => 'md',
         'assets' => 'yaml',
         'navigations' => 'yaml',
+        'blueprints' => 'yaml',
+        'fieldsets' => 'yaml',
+        'forms' => 'yaml',
+        'form_submissions' => 'yaml',
+        'users' => 'yaml',
+        'user_groups' => 'yaml',
+        'user_roles' => 'yaml',
+        'sites' => 'yaml',
+        'tokens' => 'yaml',
+        'revisions' => 'yaml',
+        'collection_trees' => 'yaml',
+        'global_variables' => 'yaml',
     ],
 ];

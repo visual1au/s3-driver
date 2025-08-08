@@ -8,7 +8,7 @@ This addon maintains Statamic's native flat-file structure while seamlessly inte
 
 - **Pure Filesystem Approach**: No database required - maintains Statamic's flat-file philosophy
 - **S3 Integration**: Uses Laravel's native S3 filesystem driver via Flysystem
-- **Complete Content Support**: Handles collections, entries, globals, taxonomies, terms, assets, and navigation
+- **Complete Content Support**: Handles all Statamic content types including collections, entries, globals, taxonomies, terms, assets, navigation, blueprints, fieldsets, forms, users, sites, tokens, and revisions
 - **Vapor Compatible**: Perfect for Laravel Vapor and other ephemeral filesystem environments  
 - **Performance Optimized**: Built-in caching layer for improved S3 read performance
 - **Seamless Integration**: Drop-in replacement for Statamic's file-based stores
@@ -77,6 +77,14 @@ return [
     'assets' => ['driver' => 's3'],
     'navigations' => ['driver' => 's3'],
     'navigation_trees' => ['driver' => 's3'],
+    'blueprints' => ['driver' => 's3'],
+    'fieldsets' => ['driver' => 's3'],
+    'forms' => ['driver' => 's3'],
+    'form_submissions' => ['driver' => 's3'],
+    'users' => ['driver' => 's3'],
+    'user_groups' => ['driver' => 's3'],
+    'user_roles' => ['driver' => 's3'],
+    'sites' => ['driver' => 's3'],
 
     // Configure caching for performance
     'cache' => [
@@ -102,6 +110,14 @@ STATAMIC_S3_TERMS_DRIVER=s3
 STATAMIC_S3_ASSETS_DRIVER=s3
 STATAMIC_S3_NAVIGATIONS_DRIVER=s3
 STATAMIC_S3_NAVIGATION_TREES_DRIVER=s3
+STATAMIC_S3_BLUEPRINTS_DRIVER=s3
+STATAMIC_S3_FIELDSETS_DRIVER=s3
+STATAMIC_S3_FORMS_DRIVER=s3
+STATAMIC_S3_FORM_SUBMISSIONS_DRIVER=s3
+STATAMIC_S3_USERS_DRIVER=s3
+STATAMIC_S3_USER_GROUPS_DRIVER=s3
+STATAMIC_S3_USER_ROLES_DRIVER=s3
+STATAMIC_S3_SITES_DRIVER=s3
 STATAMIC_S3_CACHE_ENABLED=true
 STATAMIC_S3_CACHE_TTL=3600
 ```
@@ -133,9 +149,28 @@ your-s3-bucket/
     │   ├── categories.yaml
     │   └── categories/
     │       └── technology.md
-    └── trees/
-        └── navigation/
-            └── main.yaml
+    ├── trees/
+    │   └── navigation/
+    │       └── main.yaml
+    ├── resources/
+    │   ├── blueprints/
+    │   │   └── default.yaml
+    │   ├── fieldsets/
+    │   │   └── common.yaml
+    │   └── forms/
+    │       └── contact.yaml
+    ├── storage/
+    │   ├── forms/
+    │   │   └── contact/
+    │   │       └── submission-123.yaml
+    │   ├── tokens/
+    │   │   └── password-reset-token.yaml
+    │   └── revisions/
+    │       └── entries/
+    │           └── posts/
+    │               └── 2023-12-01-abc123.yaml
+    └── users/
+        └── user@example.com.yaml
 ```
 
 ### Migrating Existing Content
